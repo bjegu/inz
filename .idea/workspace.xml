@@ -2,15 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="513245bb-d286-4c64-8de9-f70fdb6f9f3f" name="Default Changelist" comment="Initial project">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ClientsSystem/Application.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ClientsSystem/Domain/Model/Client.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ClientsSystem/Domain/Repository/ClientRepositoryI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ClientsSystem/Rest/ClientController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/inz1.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Bieg.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Infrastructure/SwaggerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ClientsSystem/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Model/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Model/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Repository/ClientRepositoryI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Repository/ClientRepositoryI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ClientsSystem/Rest/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Rest/ClientController.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,8 +20,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -54,7 +53,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ProbnyInzynier_Clients" />
     <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
