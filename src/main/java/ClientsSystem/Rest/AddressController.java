@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("api/address")
 public class AddressController {
@@ -24,4 +26,8 @@ public class AddressController {
         return addressRepository.save(address);
     }
 
+    @DeleteMapping("/delete/{id}")
+    public void deleteAddress(@PathVariable() UUID id) {
+        addressRepository.deleteById(id);
+    }
 }
