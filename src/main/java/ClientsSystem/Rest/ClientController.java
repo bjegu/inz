@@ -5,7 +5,6 @@ import ClientsSystem.Domain.Repository.ClientRepositoryI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,12 +26,19 @@ public class ClientController {
 
     @PostMapping("/")
     public Client addEdit(@RequestBody() Client client){
+        client.getAddress().forEach(address -> address.setClient(client));
         return clientRepository.save(client);
     }
 
     @DeleteMapping("/delete/{id}")
     public void deleteCl(@PathVariable()UUID id){
         clientRepository.deleteById(id);
+    }
+
+    @GetMapping("/{id}")
+    public Client byId(@PathVariable()UUID id) {
+        return clientRepository.findById(id).orElse(null);
+
     }
 
 }

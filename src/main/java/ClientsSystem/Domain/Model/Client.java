@@ -1,21 +1,33 @@
 package ClientsSystem.Domain.Model;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
 @Data
-public class Client {
+@EqualsAndHashCode(exclude = "address")
+@NoArgsConstructor
+@AllArgsConstructor
+public class Client implements Serializable {
 
     @Id
     @Type(type="uuid-char")
-    private UUID Id = UUID.randomUUID();
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(
+            name = "uuid",
+            strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name="address_id", updatable = false, nullable = false)
+    private UUID uuid;
 
     @Column(nullable = false)
     private String surname;
@@ -37,5 +49,18 @@ public class Client {
 
     @Column
     private String compName;
+
+    @OneToMany(mappedBy = "client", cascade = CascadeType.PERSIST)
+    private Set<Address> address;
+
+    public void addAddress(Address address){
+        this.address.add(address);
+        address.setClient(this);
+    }
+
+    public void removeAddress(Address address){
+        this.address.remove(address);
+        address.setClient(null);
+    }
 
 }
