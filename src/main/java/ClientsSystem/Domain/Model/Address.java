@@ -8,6 +8,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.UUID;
 
@@ -26,9 +27,10 @@ public class Address implements Serializable {
     @Column(name="address_id", updatable = false, nullable = false)
     private UUID uuid;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "client_id")
-    @JsonIgnore
+    @NotNull
+    @JsonBackReference
     private Client client;
 
     @Column(name="address_type", nullable = false)

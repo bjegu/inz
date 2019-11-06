@@ -2,17 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="513245bb-d286-4c64-8de9-f70fdb6f9f3f" name="Default Changelist" comment="Initial project">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Model/Agreement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Service/ClientService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Repository/AgreementRepositoryI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Rest/AgreementController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Model/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Model/Address.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Model/Agreement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Model/Agreement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Model/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Model/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ClientsSystem/Rest/AddressController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Rest/AddressController.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="168" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -126,5 +130,10 @@
       <path value="$PROJECT_DIR$/inz" />
     </ignored-roots>
     <option name="LAST_COMMIT_MESSAGE" value="" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/inz1$Application.ic" NAME="Application Coverage Results" MODIFIED="1572979001400" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ClientsSystem.*</FILTER>
+    </SUITE>
   </component>
 </project>

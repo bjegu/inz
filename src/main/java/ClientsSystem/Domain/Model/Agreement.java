@@ -1,22 +1,22 @@
 package ClientsSystem.Domain.Model;
 
+import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
+import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 import org.hibernate.type.DateType;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
 @Data
+@ToString(exclude = {"client"})
 public class Agreement implements Serializable {
-
-    //relation with a client to be added later
 
     @Id
     @Type(type="uuid-char")
@@ -28,6 +28,12 @@ public class Agreement implements Serializable {
     @Column(name="agr_id", updatable = false, nullable = false)
     private UUID uuid;
 
+    @ManyToOne()
+    @JoinColumn(name = "client_id")
+    @NotNull
+    @JsonBackReference
+    private Client client;
+
     @Column(nullable = false,name="agreement_no")
     private String agreementNo;
 
@@ -36,10 +42,10 @@ public class Agreement implements Serializable {
     //relation one to one later
 
     @Column(nullable = false, name="start_date")
-    private DateType start;
+    private LocalDate start;
 
     @Column(name="finish_date")
-    private DateType end;
+    private LocalDate end;
 
     @Column(nullable = false, name="is_active_flg")
     private Boolean active;
@@ -47,4 +53,5 @@ public class Agreement implements Serializable {
 
     @Column(name="additional_info")
     private String additional;
+
 }

@@ -1,5 +1,6 @@
 package ClientsSystem.Domain.Model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
@@ -11,7 +12,7 @@ import java.util.UUID;
 
 @Entity
 @Data
-@EqualsAndHashCode(exclude = "address")
+@EqualsAndHashCode(exclude = {"address", "agreement"})
 @NoArgsConstructor
 @AllArgsConstructor
 public class Client implements Serializable {
@@ -22,7 +23,7 @@ public class Client implements Serializable {
     @GenericGenerator(
             name = "uuid",
             strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name="address_id", updatable = false, nullable = false)
+    @Column(name="client_id", updatable = false, nullable = false)
     private UUID uuid;
 
     @Column(nullable = false)
@@ -46,17 +47,12 @@ public class Client implements Serializable {
     @Column
     private String compName;
 
-    @OneToMany(mappedBy = "client", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<Address> address;
 
-    public void addAddress(Address address){
-        this.address.add(address);
-        address.setClient(this);
-    }
-
-    public void removeAddress(Address address){
-        this.address.remove(address);
-        address.setClient(null);
-    }
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private Set<Agreement> agreement;
 
 }
