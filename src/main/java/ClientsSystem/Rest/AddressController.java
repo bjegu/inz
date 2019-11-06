@@ -21,7 +21,7 @@ public class AddressController {
         return addressRepository.findAll(PageRequest.of(0,2));
     }
 
-    @PostMapping("/add")
+    @PostMapping("/addmodify")
     public Address addAddress(@RequestBody() Address address){
         return addressRepository.save(address);
     }

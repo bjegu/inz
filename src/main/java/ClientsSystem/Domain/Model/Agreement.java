@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
-import org.hibernate.type.DateType;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -37,9 +36,9 @@ public class Agreement implements Serializable {
     @Column(nullable = false,name="agreement_no")
     private String agreementNo;
 
-    @Column(nullable = false, name = "agreement_type_id")
-    private Integer agrTypeId;
-    //relation one to one later
+//    @Column(nullable = false, name = "agreement_type_id")
+//    private Integer agrTypeId;
+//    //relation one to one later
 
     @Column(nullable = false, name="start_date")
     private LocalDate start;
@@ -53,5 +52,9 @@ public class Agreement implements Serializable {
 
     @Column(name="additional_info")
     private String additional;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "agreement_type_id", referencedColumnName = "id")
+    private AgreementType agreementType;
 
 }

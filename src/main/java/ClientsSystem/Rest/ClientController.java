@@ -24,7 +24,7 @@ public class ClientController {
         return clientRepository.findAll(PageRequest.of(0,2));
     }
 
-    @PostMapping("/")
+    @PostMapping("/addmodify")
     public Client addEdit(@RequestBody() Client client){
         client.getAddress().forEach(address -> address.setClient(client));
         return clientRepository.save(client);
