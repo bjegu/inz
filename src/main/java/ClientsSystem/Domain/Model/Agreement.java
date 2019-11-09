@@ -36,9 +36,6 @@ public class Agreement implements Serializable {
     @Column(nullable = false,name="agreement_no")
     private String agreementNo;
 
-//    @Column(nullable = false, name = "agreement_type_id")
-//    private Integer agrTypeId;
-//    //relation one to one later
 
     @Column(nullable = false, name="start_date")
     private LocalDate start;

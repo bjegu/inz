@@ -55,4 +55,7 @@ public class Client implements Serializable {
     @JsonManagedReference
     private Set<Agreement> agreement;
 
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private Set<EventClients> eventClients;
 }
