@@ -3,6 +3,7 @@ package ClientsSystem.Domain.Model;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
@@ -10,7 +11,6 @@ import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.UUID;
@@ -19,6 +19,7 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(exclude = {"eventClients", "eventType"})
 @Table(name="calendar_events")
 public class CalendarEvents implements Serializable {
 
@@ -47,10 +48,10 @@ public class CalendarEvents implements Serializable {
     private String name;
 
     @OneToMany(mappedBy = "calendarEvents", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonManagedReference(value = "calendar_clevents")
     private Set<EventClients> eventClients;
 
-    @OneToOne(cascade= CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name="event_type", referencedColumnName = "id")
     private EventType eventType;
 }

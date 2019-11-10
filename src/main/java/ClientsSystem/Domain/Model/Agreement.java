@@ -30,7 +30,7 @@ public class Agreement implements Serializable {
     @ManyToOne()
     @JoinColumn(name = "client_id")
     @NotNull
-    @JsonBackReference
+    @JsonBackReference(value ="client_agreement")
     private Client client;
 
     @Column(nullable = false,name="agreement_no")

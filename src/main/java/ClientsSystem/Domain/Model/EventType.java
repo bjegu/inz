@@ -1,5 +1,6 @@
 package ClientsSystem.Domain.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -18,5 +19,6 @@ public class EventType {
     private String eventTypeName;
 
     @OneToOne(mappedBy="eventType")
+    @JsonIgnore
     private CalendarEvents calendarEvents;
 }

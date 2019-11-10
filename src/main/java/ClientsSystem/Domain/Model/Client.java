@@ -48,14 +48,14 @@ public class Client implements Serializable {
     private String compName;
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonManagedReference(value = "client_address")
     private Set<Address> address;
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonManagedReference(value ="client_agreement")
     private Set<Agreement> agreement;
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonManagedReference(value="client_clevents")
     private Set<EventClients> eventClients;
 }

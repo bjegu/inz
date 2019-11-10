@@ -1,5 +1,6 @@
 package ClientsSystem.Domain.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -24,6 +25,7 @@ public class AgreementType {
     private Boolean obligatory;
 
     @OneToOne(mappedBy="agreementType")
+    @JsonIgnore
     private Agreement agreement;
 
 }

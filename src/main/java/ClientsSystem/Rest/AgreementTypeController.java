@@ -1,7 +1,7 @@
 package ClientsSystem.Rest;
 
 import ClientsSystem.Domain.Model.AgreementType;
-import ClientsSystem.Domain.Repository.AgreementTypeRepositoryI;
+import ClientsSystem.Domain.Service.AgreementTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -12,15 +12,15 @@ import org.springframework.web.bind.annotation.*;
 public class AgreementTypeController {
 
     @Autowired
-    public AgreementTypeRepositoryI agreementTypeRepository;
+    public AgreementTypeService agreementTypeService;
 
     @GetMapping ("/showall")
     public Page<AgreementType> showAll(){
-        return agreementTypeRepository.findAll(PageRequest.of(0,2));
+        return agreementTypeService.findAll(PageRequest.of(0,2));
     }
 
     @PostMapping("addModify")
     public AgreementType addType(@RequestBody() AgreementType agreementType){
-        return agreementTypeRepository.save(agreementType);
+        return agreementTypeService.save(agreementType);
     }
 }

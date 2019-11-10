@@ -35,14 +35,15 @@ public class EventClients {
 
     @ManyToOne()
     @JoinColumn(name = "client_id")
-    @JsonBackReference
+    @JsonBackReference(value="client_clevents")
     private Client client;
 
 
     @ManyToOne()
     @Id
     @JoinColumn(name="event_id")
+    @Type(type="uuid-char")
     @NotNull
-    @JsonBackReference
+    @JsonBackReference(value = "calendar_clevents")
     private CalendarEvents calendarEvents;
 }

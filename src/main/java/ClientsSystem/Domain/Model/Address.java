@@ -30,7 +30,7 @@ public class Address implements Serializable {
     @ManyToOne()
     @JoinColumn(name = "client_id")
     @NotNull
-    @JsonBackReference
+    @JsonBackReference(value = "client_address")
     private Client client;
 
     @Column(name="address_type", nullable = false)
