@@ -2,28 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="513245bb-d286-4c64-8de9-f70fdb6f9f3f" name="Default Changelist" comment="Initial project">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Service/AddressService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Service/AgreementService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Service/AgreementTypeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Service/CalendarEventsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Service/EventClientsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Service/Validator/ClientValidator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Rest/CalendarEventsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Rest/EventClientsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Service/Validator/ClientValidationException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Model/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Model/Address.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Model/Agreement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Model/Agreement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Model/AgreementType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Model/AgreementType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Model/CalendarEvents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Model/CalendarEvents.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Model/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Model/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Model/EventClients.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Model/EventClients.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Model/EventClientsPK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Model/EventClientsPK.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Model/EventType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Model/EventType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Service/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Service/ClientService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ClientsSystem/Rest/AddressController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Rest/AddressController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ClientsSystem/Rest/AgreementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Rest/AgreementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ClientsSystem/Rest/AgreementTypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Rest/AgreementTypeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ClientsSystem/Rest/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Rest/ClientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Service/Validator/ClientValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Service/Validator/ClientValidator.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -71,6 +53,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.15" />

@@ -2,6 +2,7 @@ package ClientsSystem.Domain.Service;
 
 import ClientsSystem.Domain.Model.Client;
 import ClientsSystem.Domain.Repository.ClientRepositoryI;
+import ClientsSystem.Domain.Service.Validator.ClientValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -27,6 +28,7 @@ public class ClientService {
 
     @Transactional
     public Client save(Client client) {
+        ClientValidator.validateClient(client);
         return clientRepository.save(client);
     }
 
