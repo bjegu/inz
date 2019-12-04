@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 
@@ -18,9 +19,9 @@ public class AgreementController {
     @Autowired
     public AgreementService agreementService;
 
-    @GetMapping("/allcontracts")
-    public Page<Agreement> showAll() {
-        return agreementService.findAll(PageRequest.of(0, 2));
+    @GetMapping("/")
+    public List<Agreement> showAll() {
+        return agreementService.findAll(PageRequest.of(0, 4)).getContent();
     }
 
     @PostMapping("/addmodify")

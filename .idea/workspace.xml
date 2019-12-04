@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="513245bb-d286-4c64-8de9-f70fdb6f9f3f" name="Default Changelist" comment="Initial project">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Service/Validator/ClientValidationException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Service/Validator/AgreementValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Service/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Service/ClientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Model/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Model/Address.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Model/Agreement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Model/Agreement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Model/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Model/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Service/Validator/ClientValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Domain/Service/Validator/ClientValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ClientsSystem/Rest/AgreementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Rest/AgreementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ClientsSystem/Rest/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientsSystem/Rest/ClientController.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -129,6 +133,13 @@
       <path value="$PROJECT_DIR$/inz" />
     </ignored-roots>
     <option name="LAST_COMMIT_MESSAGE" value="" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="clientService.findAll(PageRequest.of(0,10)).getContent()" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/inz1$Application.ic" NAME="Application Coverage Results" MODIFIED="1572979001400" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

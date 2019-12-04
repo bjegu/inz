@@ -15,6 +15,7 @@ import java.util.UUID;
 @Entity
 @Data
 @ToString(exclude = {"client"})
+@Embeddable
 public class Agreement implements Serializable {
 
     @Id

@@ -47,11 +47,13 @@ public class Client implements Serializable {
     @Column
     private String compName;
 
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    @Embedded
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval=true)
     @JsonManagedReference(value = "client_address")
     private Set<Address> address;
 
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    @Embedded
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval=true)
     @JsonManagedReference(value ="client_agreement")
     private Set<Agreement> agreement;
 

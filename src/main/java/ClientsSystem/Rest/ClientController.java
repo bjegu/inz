@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -19,11 +20,11 @@ public class ClientController {
     public ClientService clientService;
 
     @GetMapping("/")
-    public Page<Client> showAll(){
-        return clientService.findAll(PageRequest.of(0,2));
+    public List<Client> showAll(){
+        return clientService.findAll(PageRequest.of(0,10)).getContent();
     }
 
-    @PostMapping("/addmodify")
+    @PostMapping("/")
     public Client addEdit(@RequestBody() Client client){
 //        client.getAddress().forEach(address -> address.setClient(client));
         return clientService.save(client);
