@@ -5,6 +5,7 @@ import ClientsSystem.Domain.Service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,8 +21,9 @@ public class ClientController {
     public ClientService clientService;
 
     @GetMapping("/")
-    public List<Client> showAll(){
-        return clientService.findAll(PageRequest.of(0,10)).getContent();
+    public List<Client> showAll(@RequestParam (required = false, defaultValue = "") String sort, @RequestParam (required = false, defaultValue = "ASC") String order){
+        return clientService.findAll(PageRequest.of(0,10, Sort.by(Sort.Direction.fromString(order), sort)))
+                .getContent();
     }
 
     @PostMapping("/")
