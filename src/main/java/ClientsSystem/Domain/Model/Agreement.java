@@ -15,7 +15,6 @@ import java.util.UUID;
 @Entity
 @Data
 @ToString(exclude = {"client"})
-@Embeddable
 public class Agreement implements Serializable {
 
     @Id
@@ -31,7 +30,6 @@ public class Agreement implements Serializable {
     @ManyToOne()
     @JoinColumn(name = "client_id")
     @NotNull
-    @JsonBackReference(value ="client_agreement")
     private Client client;
 
     @Column(nullable = false,name="agreement_no")
@@ -51,8 +49,9 @@ public class Agreement implements Serializable {
     @Column(name="additional_info")
     private String additional;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "agreement_type_id", referencedColumnName = "id")
+//    @JsonManagedReference(value="agreement_type")
     private AgreementType agreementType;
 
 }

@@ -1,5 +1,6 @@
 package ClientsSystem.Domain.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
@@ -47,14 +48,12 @@ public class Client implements Serializable {
     @Column
     private String compName;
 
-    @Embedded
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval=true)
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
     @JsonManagedReference(value = "client_address")
     private Set<Address> address;
 
-    @Embedded
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval=true)
-    @JsonManagedReference(value ="client_agreement")
+    @OneToMany(mappedBy = "client")
+    @JsonIgnore
     private Set<Agreement> agreement;
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)

@@ -1,5 +1,6 @@
 package ClientsSystem.Domain.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
@@ -26,6 +27,7 @@ public class AgreementType {
 
     @OneToOne(mappedBy="agreementType")
     @JsonIgnore
+//    @JsonBackReference(value="agreement_type")
     private Agreement agreement;
 
 }

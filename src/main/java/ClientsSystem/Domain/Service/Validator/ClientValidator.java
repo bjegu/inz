@@ -18,7 +18,7 @@ public class ClientValidator {
         if (client.getPesel() != null && !isPeselValid(client.getPesel())) {
             throw new ClientValidationException(client, "The PESEL number is incorrect");
         }
-        if (client.getRegon() != null && (client.getRegon().toString().length() != 9 || client.getRegon().toString().length() != 14)) {
+        if (client.getRegon() != null && (client.getRegon().toString().length() != 9 && client.getRegon().toString().length() != 14)) {
             throw new ClientValidationException(client, "The REGON number is incorrect");
         }
 
