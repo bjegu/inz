@@ -24,7 +24,7 @@ public class AgreementController {
         return agreementService.findAll(PageRequest.of(0, 4)).getContent();
     }
 
-    @PostMapping("/addmodify")
+    @PostMapping("/")
     public Agreement addContract(@RequestBody() Agreement agreement) {
         return agreementService.save(agreement);
     }

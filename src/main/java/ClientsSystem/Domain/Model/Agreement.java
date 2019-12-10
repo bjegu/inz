@@ -1,6 +1,5 @@
 package ClientsSystem.Domain.Model;
 
-import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
 import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
@@ -34,7 +33,6 @@ public class Agreement implements Serializable {
 
     @Column(nullable = false,name="agreement_no")
     private String agreementNo;
-
 
     @Column(nullable = false, name="start_date")
     private LocalDate start;
