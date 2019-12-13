@@ -2,10 +2,12 @@ package ClientsSystem.Rest;
 
 import ClientsSystem.Domain.Model.Client;
 import ClientsSystem.Domain.Service.ClientService;
+import ClientsSystem.Domain.Service.Specification.ClientSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,12 +20,19 @@ public class ClientController {
     // dependency injection annotation
     //ClientRepository injection
     @Autowired
-    public ClientService clientService;
+    private ClientService clientService;
 
     @GetMapping("/")
-    public List<Client> showAll(@RequestParam (required = false, defaultValue = "") String sort, @RequestParam (required = false, defaultValue = "ASC") String order){
-        return clientService.findAll(PageRequest.of(0,10, Sort.by(Sort.Direction.fromString(order), sort)))
+    public List<Client> showAll(@RequestParam (required = false, defaultValue = "surname") String sort,
+                                @RequestParam (required = false, defaultValue = "ASC") String order,
+                                @RequestParam(required = false) String search){
+        return clientService.findAll(PageRequest.of(0,10, Sort.by(Sort.Direction.fromString(order), sort)), search)
                 .getContent();
+    }
+
+    @GetMapping("/search")
+    public List<Client> showAll(@RequestParam String search){
+        return clientService.searchClient(search);
     }
 
     @PostMapping("/")
