@@ -1,5 +1,6 @@
 package ClientsSystem.Domain.Model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
@@ -47,9 +48,9 @@ public class Agreement implements Serializable {
     @Column(name="additional_info")
     private String additional;
 
-    @OneToOne
-    @JoinColumn(name = "agreement_type_id", referencedColumnName = "id")
-//    @JsonManagedReference(value="agreement_type")
+    @ManyToOne
+    @JoinColumn(name = "agreement_type_id", nullable = false)
+    @JsonManagedReference(value="agreement_type")
     private AgreementType agreementType;
 
 }

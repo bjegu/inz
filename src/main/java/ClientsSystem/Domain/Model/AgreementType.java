@@ -1,10 +1,10 @@
 package ClientsSystem.Domain.Model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -25,9 +25,8 @@ public class AgreementType {
     @Column(name="is_obligatory")
     private Boolean obligatory;
 
-    @OneToOne(mappedBy="agreementType")
-    @JsonIgnore
-//    @JsonBackReference(value="agreement_type")
-    private Agreement agreement;
+    @OneToMany(mappedBy="agreementType")
+    @JsonBackReference(value="agreement_type")
+    private List<Agreement> agreement;
 
 }
