@@ -6,13 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
 
+import static ClientsSystem.Infrastructure.security.SecurityUtils.*;
+
 @RestController
 @RequestMapping("/api/client")
+@PreAuthorize(HAS_ADMIN_PERMISSION)
 public class ClientController {
 
     public static final Integer CLIENT_PAGE_SIZE = 10;
