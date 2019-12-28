@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/agrtype")
 public class AgreementTypeController {
@@ -15,8 +17,8 @@ public class AgreementTypeController {
     public AgreementTypeService agreementTypeService;
 
     @GetMapping ("/showall")
-    public Page<AgreementType> showAll(){
-        return agreementTypeService.findAll(PageRequest.of(0,2));
+    public List<AgreementType> showAll(){
+        return agreementTypeService.findAll(PageRequest.of(0,2)).getContent();
     }
 
     @PostMapping("addModify")
