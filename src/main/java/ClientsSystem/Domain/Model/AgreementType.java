@@ -1,7 +1,9 @@
 package ClientsSystem.Domain.Model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
@@ -9,6 +11,7 @@ import java.util.List;
 @Entity
 @Data
 @Table(name = "agreement_type")
+@ToString(exclude = "agreement")
 public class AgreementType {
 
     @Id
@@ -26,7 +29,7 @@ public class AgreementType {
     private Boolean obligatory;
 
     @OneToMany(mappedBy="agreementType")
-    @JsonBackReference(value="agreement_type")
+    @JsonManagedReference(value="agreement_type")
     private List<Agreement> agreement;
 
 }

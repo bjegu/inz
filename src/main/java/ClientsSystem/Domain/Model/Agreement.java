@@ -1,5 +1,6 @@
 package ClientsSystem.Domain.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.ToString;
@@ -50,7 +51,7 @@ public class Agreement implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "agreement_type_id", nullable = false)
-    @JsonManagedReference(value="agreement_type")
+    @JsonBackReference(value="agreement_type")
     private AgreementType agreementType;
 
 }
