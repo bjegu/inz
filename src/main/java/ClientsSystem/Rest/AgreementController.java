@@ -1,7 +1,6 @@
 package ClientsSystem.Rest;
 
 import ClientsSystem.Domain.Model.Agreement;
-import ClientsSystem.Domain.Repository.AgreementRepositoryI;
 import ClientsSystem.Domain.Service.AgreementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,8 +19,8 @@ public class AgreementController {
     public AgreementService agreementService;
 
     @GetMapping("/")
-    public List<Agreement> showAll() {
-        return agreementService.findAll(PageRequest.of(0, 4)).getContent();
+    public Page<Agreement> showAll(@RequestParam (required = false, defaultValue = "1") Integer page) {
+        return agreementService.findAll(PageRequest.of(page, 3));
     }
 
     @PostMapping("/")
