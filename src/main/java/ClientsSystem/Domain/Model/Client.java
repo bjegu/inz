@@ -52,7 +52,7 @@ public class Client implements Serializable {
     @JsonManagedReference(value = "client_address")
     private Set<Address> address;
 
-    @OneToMany(mappedBy = "client")
+    @OneToMany(mappedBy = "client", cascade = CascadeType.REMOVE)
     @JsonIgnore
     private Set<Agreement> agreement;
 
