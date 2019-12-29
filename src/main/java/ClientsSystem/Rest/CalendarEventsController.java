@@ -8,10 +8,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("api/calendarevents")
+@RequestMapping("api/calendar")
 public class CalendarEventsController {
 
     @Autowired
@@ -30,5 +31,10 @@ public class CalendarEventsController {
     @DeleteMapping("/delete/{id}")
     public void deleteMeeting(@PathVariable() UUID id){
         calendarEventsService.deleteById(id);
+    }
+
+    @GetMapping("{year}/{month}")
+    public List<CalendarEvents> showByDate(@PathVariable() Integer year, @PathVariable() Integer month){
+        return calendarEventsService.findAll(PageRequest.of(0,20)).getContent();
     }
 }
