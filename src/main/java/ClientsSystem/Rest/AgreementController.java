@@ -15,12 +15,14 @@ import java.util.UUID;
 @RequestMapping("api/agreement")
 public class AgreementController {
 
+    public final Integer AGREEMENT_PAGE_SIZE = 10;
+
     @Autowired
     public AgreementService agreementService;
 
     @GetMapping("/")
-    public Page<Agreement> showAll(@RequestParam (required = false, defaultValue = "1") Integer page) {
-        return agreementService.findAll(PageRequest.of(page, 3));
+    public Page<Agreement> showAll(@RequestParam (required = false, defaultValue = "0") Integer page) {
+        return agreementService.findAll(PageRequest.of(page, AGREEMENT_PAGE_SIZE));
     }
 
     @PostMapping("/")

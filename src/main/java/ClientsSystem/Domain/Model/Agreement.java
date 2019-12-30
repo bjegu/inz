@@ -51,7 +51,7 @@ public class Agreement implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "agreement_type_id", nullable = false)
-    @JsonBackReference(value="agreement_type")
+//    @JsonBackReference(value="agreement_type")
     private AgreementType agreementType;
 
 }

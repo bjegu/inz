@@ -17,8 +17,8 @@ import java.util.UUID;
 @RequestMapping("/api/client")
 public class ClientController {
 
-    // dependency injection annotation
-    //ClientRepository injection
+    public final Integer CLIENT_PAGE_SIZE = 10;
+
     @Autowired
     private ClientService clientService;
 
@@ -26,7 +26,7 @@ public class ClientController {
     public List<Client> showAll(@RequestParam (required = false, defaultValue = "surname") String sort,
                                 @RequestParam (required = false, defaultValue = "ASC") String order,
                                 @RequestParam(required = false) String search){
-        return clientService.findAll(PageRequest.of(0,10, Sort.by(Sort.Direction.fromString(order), sort)), search)
+        return clientService.findAll(PageRequest.of(0,CLIENT_PAGE_SIZE, Sort.by(Sort.Direction.fromString(order), sort)), search)
                 .getContent();
     }
 
