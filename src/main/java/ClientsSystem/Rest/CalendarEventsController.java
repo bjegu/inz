@@ -1,7 +1,9 @@
 package ClientsSystem.Rest;
 
 import ClientsSystem.Domain.Model.CalendarEvents;
+import ClientsSystem.Domain.Model.EventType;
 import ClientsSystem.Domain.Repository.CalendatEventsRepositoryI;
+import ClientsSystem.Domain.Repository.EventTypeRepositoryI;
 import ClientsSystem.Domain.Service.CalendarEventsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,7 +18,7 @@ import java.util.UUID;
 public class CalendarEventsController {
 
     @Autowired
-    public CalendarEventsService calendarEventsService;
+    private CalendarEventsService calendarEventsService;
 
     @GetMapping
     public Page<CalendarEvents> showAll(){
@@ -36,5 +38,10 @@ public class CalendarEventsController {
     @GetMapping("{year}/{month}")
     public List<CalendarEvents> showByDate(@PathVariable() Integer year, @PathVariable() Integer month){
         return calendarEventsService.findAll(PageRequest.of(0,20)).getContent();
+    }
+
+    @GetMapping("/type")
+    public List<EventType> showTypes(){
+        return calendarEventsService.getTypes();
     }
 }

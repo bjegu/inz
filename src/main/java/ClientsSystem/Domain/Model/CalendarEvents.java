@@ -1,5 +1,6 @@
 package ClientsSystem.Domain.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -51,7 +52,8 @@ public class CalendarEvents implements Serializable {
     @JsonManagedReference(value = "calendar_clevents")
     private Set<EventClients> eventClients;
 
-    @OneToOne
-    @JoinColumn(name="event_type", referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name = "event_type", nullable = false)
+//    @JsonBackReference(value="event_type")
     private EventType eventType;
 }

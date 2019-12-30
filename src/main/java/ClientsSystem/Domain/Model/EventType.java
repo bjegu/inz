@@ -1,13 +1,19 @@
 package ClientsSystem.Domain.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
 @Table(name="event_type")
+@ToString(exclude = "calendarEvents")
+@EqualsAndHashCode(exclude = "calendarEvents")
 public class EventType {
 
     @Id
@@ -18,7 +24,8 @@ public class EventType {
     @Column(name="event_type_name")
     private String eventTypeName;
 
-    @OneToOne(mappedBy="eventType")
+    @OneToMany(mappedBy="eventType")
     @JsonIgnore
-    private CalendarEvents calendarEvents;
+//    @JsonManagedReference(value="event_type")
+    private List<CalendarEvents> calendarEvents;
 }
