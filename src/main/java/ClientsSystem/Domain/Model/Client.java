@@ -13,7 +13,8 @@ import java.util.UUID;
 
 @Entity
 @Data
-@EqualsAndHashCode(exclude = {"address", "agreement"})
+@EqualsAndHashCode(exclude = {"address", "agreement", "eventClients"})
+@ToString(exclude = "eventClients")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Client implements Serializable {
@@ -57,6 +58,7 @@ public class Client implements Serializable {
     private Set<Agreement> agreement;
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
-    @JsonManagedReference(value="client_clevents")
+//    @JsonManagedReference(value="client_events")
+    @JsonIgnore
     private Set<EventClients> eventClients;
 }

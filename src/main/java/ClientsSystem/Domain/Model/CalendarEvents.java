@@ -49,7 +49,7 @@ public class CalendarEvents implements Serializable {
     private String name;
 
     @OneToMany(mappedBy = "calendarEvents", cascade = CascadeType.ALL)
-    @JsonManagedReference(value = "calendar_clevents")
+//    @JsonManagedReference(value = "client_events")
     private Set<EventClients> eventClients;
 
     @ManyToOne

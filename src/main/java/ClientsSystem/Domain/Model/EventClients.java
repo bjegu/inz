@@ -1,19 +1,20 @@
 package ClientsSystem.Domain.Model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.UUID;
 
 
 @Entity
 @Data
-@ToString(exclude = {"client"})
+@ToString(exclude = {"calendarEvents"})
+@EqualsAndHashCode(exclude = {"calendarEvents", "client"})
 @IdClass(EventClientsPK.class)
 @Table(name="event_client")
 public class EventClients {
@@ -35,15 +36,16 @@ public class EventClients {
 
     @ManyToOne()
     @JoinColumn(name = "client_id")
-    @JsonBackReference(value="client_clevents")
+//    @JsonBackReference(value="client_events")
     private Client client;
 
 
     @ManyToOne()
-    @Id
     @JoinColumn(name="event_id")
     @Type(type="uuid-char")
+    @Id
     @NotNull
-    @JsonBackReference(value = "calendar_clevents")
+    //@JsonBackReference(value = "calendar_clevents")
+    @JsonIgnore
     private CalendarEvents calendarEvents;
 }
