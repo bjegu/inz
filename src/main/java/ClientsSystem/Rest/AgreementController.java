@@ -33,9 +33,9 @@ public class AgreementController {
     }
 
     @GetMapping("/client")
-    public Page<Agreement> showAClient(@RequestParam (required = false, defaultValue = "0") Integer page) {
+    public Page<Agreement> client(@RequestParam (required = false, defaultValue = "0") Integer page) {
         String userEmail = (String) authenticationFacade.getAuthentication().getPrincipal();
-        return agreementService.getByClient(userEmail, PageRequest.of(0, 4));
+        return agreementService.getByClient(userEmail, PageRequest.of(page, AGREEMENT_PAGE_SIZE));
     }
 
     @PostMapping("/")
