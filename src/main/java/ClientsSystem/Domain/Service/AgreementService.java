@@ -2,6 +2,8 @@ package ClientsSystem.Domain.Service;
 
 import ClientsSystem.Domain.Model.Agreement;
 import ClientsSystem.Domain.Repository.AgreementRepositoryI;
+import ClientsSystem.Infrastructure.notification.NotificationQueues;
+import ClientsSystem.Infrastructure.notification.NotificationService;
 import ClientsSystem.Domain.Service.Specification.AgreementClientSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,6 +21,9 @@ public class AgreementService {
     @Autowired
     private AgreementRepositoryI agreementRepository;
 
+    @Autowired
+    private NotificationService notificationService;
+
     @Transactional
     public Page<Agreement> findAll(PageRequest of) {
         return agreementRepository.findAll(of);
@@ -26,12 +31,19 @@ public class AgreementService {
 
     @Transactional
     public Agreement save(Agreement agreement) {
-        return agreementRepository.save(agreement);
+        final Agreement response = agreementRepository.save(agreement);
+        notificationService.sendNotification(response.getUuid(),
+                response.getClient().getName() + ' ' + response.getClient().getSurname(),
+                response.getClient().getEmail(),
+                response.getEnd(),
+                NotificationQueues.CLIENT_AGREEMENT);
+        return response;
     }
 
     @Transactional
     public void deleteById(UUID id) {
         agreementRepository.deleteById(id);
+        notificationService.sendNotificationDeactivation(id);
     }
 
     public Page<Agreement> getByClient(String userEmail, PageRequest pageRequest) {

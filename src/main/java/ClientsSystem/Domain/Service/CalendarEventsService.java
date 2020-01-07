@@ -6,16 +6,15 @@ import ClientsSystem.Domain.Model.EventType;
 import ClientsSystem.Domain.Repository.CalendatEventsRepositoryI;
 import ClientsSystem.Domain.Repository.EventClientsRepositoryI;
 import ClientsSystem.Domain.Repository.EventTypeRepositoryI;
+import ClientsSystem.Infrastructure.notification.NotificationQueues;
+import ClientsSystem.Infrastructure.notification.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class CalendarEventsService {
@@ -26,11 +25,14 @@ public class CalendarEventsService {
     private EventClientsRepositoryI eventClientsRepositoryI;
     @Autowired
     private EventTypeRepositoryI eventTypeRepositoryI;
+    @Autowired
+    private NotificationService notificationService;
 
 
     @Transactional
     public void deleteById(UUID id) {
         calendatEventsRepository.findById(id);
+        notificationService.sendNotificationDeactivation(id);
     }
 
     @Transactional
@@ -46,10 +48,20 @@ public class CalendarEventsService {
             CalendarEvents respond = calendatEventsRepository.save(calendarEvents);
             eventClients.forEach(eventClient -> eventClient.setCalendarEvents(respond));
             calendarEvents.setEventClients(eventClients);
-        }else{
+            calendarEvents.setUuid(respond.getUuid());
+        } else {
             eventClientsRepositoryI.removeByEventId(calendarEvents.getUuid());
             calendarEvents.getEventClients().forEach(eventClient -> eventClient.setCalendarEvents(calendarEvents));
         }
+        calendarEvents.getEventClients().stream()
+                .map(EventClients::getClient)
+                .filter(Objects::nonNull)
+                .forEach(client ->
+                        notificationService.sendNotification(calendarEvents.getUuid(),
+                                client.getName() + ' ' + client.getSurname(),
+                                client.getEmail(),
+                                calendarEvents.getStart(),
+                                NotificationQueues.EVENT_REMINDER));
         return calendatEventsRepository.save(calendarEvents);
     }
 
