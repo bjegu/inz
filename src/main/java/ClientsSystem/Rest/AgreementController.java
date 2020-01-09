@@ -6,6 +6,7 @@ import ClientsSystem.Infrastructure.security.IAuthenticationFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,10 +27,20 @@ public class AgreementController {
     @Autowired
     private IAuthenticationFacade authenticationFacade;
 
+    private PageRequest preparePageRequest(Integer page, String order, String sort) {
+        if (page == -1) {
+            return PageRequest.of(0, 9999, Sort.by(Sort.Direction.fromString(order), sort));
+        }
+        return PageRequest.of(page, AGREEMENT_PAGE_SIZE, Sort.by(Sort.Direction.fromString(order), sort));
+    }
+
     @GetMapping("/")
     @PreAuthorize(HAS_ADMIN_PERMISSION)
-    public Page<Agreement> showAll(@RequestParam (required = false, defaultValue = "0") Integer page) {
-        return agreementService.findAll(PageRequest.of(page, AGREEMENT_PAGE_SIZE));
+    public Page<Agreement> showAll(@RequestParam (required = false, defaultValue = "0") Integer page,
+                                   @RequestParam(required = false, defaultValue = "agreementNo") String sort,
+                                   @RequestParam(required = false, defaultValue = "ASC") String order,
+                                   @RequestParam(required = false) String search) {
+        return agreementService.findAll(preparePageRequest(page, order,sort), search);
     }
 
     @GetMapping("/client")
