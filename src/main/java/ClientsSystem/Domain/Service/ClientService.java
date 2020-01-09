@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -50,6 +51,10 @@ public class ClientService {
     public List<Client> searchClient(String search){
         Specification<Client> specification = new ClientSpecification(search);
         return clientRepository.findAll(specification);
+    }
+
+    public Optional<Client> findByEmail(String email){
+        return clientRepository.findByEmail(email);
     }
 
 }

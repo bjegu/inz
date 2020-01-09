@@ -1,6 +1,7 @@
 package ClientsSystem.Domain.Repository;
 
 import ClientsSystem.Domain.Model.Agreement;
+import ClientsSystem.Domain.Model.Client;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
