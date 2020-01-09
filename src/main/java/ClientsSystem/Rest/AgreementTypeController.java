@@ -18,7 +18,7 @@ public class AgreementTypeController {
 
     @GetMapping ("/showall")
     public List<AgreementType> showAll(){
-        return agreementTypeService.findAll(PageRequest.of(0,2)).getContent();
+        return agreementTypeService.findAll(PageRequest.of(0,100)).getContent();
     }
 
     @PostMapping("addModify")
